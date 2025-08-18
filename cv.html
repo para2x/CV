@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamze Dokoohaki's Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root {
+            --sidebar-bg: #2c3e50;
+            --main-bg: #f7f9fa;
+            --card-bg: #ffffff;
+            --primary-text: #2c3e50;
+            --secondary-text: #5f6f81;
+            --accent-color: #2980b9;
+            --sidebar-text: #ecf0f1;
+            --sidebar-border: #5f6f81;
+            --border-color: #e1e5e8;
+            --border-radius: 8px;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Lato', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--secondary-text);
+            background-color: var(--main-bg);
+            margin: 0;
+            padding: 3rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 0;
+            background-color: var(--sidebar-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            padding: 2.5rem;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .sidebar-section h2 {
+            display: flex;
+            align-items: center;
+            font-size: 1.25rem;
+            color: white;
+            margin: 0 0 1rem 0;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--sidebar-border);
+        }
+
+        .sidebar-section h2 i {
+            margin-right: 0.75rem;
+            width: 24px;
+            text-align: center;
+            color: var(--accent-color);
+        }
+
+        .contact-list, .skills-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            word-break: break-all;
+        }
+        
+        .contact-list i {
+            color: var(--accent-color);
+            margin-right: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .skills-list li {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skills-list strong {
+            display: block;
+            margin-bottom: 0.35rem;
+            font-weight: 700;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .main-content {
+            background-color: var(--card-bg);
+            padding: 3rem;
+        }
+
+        .main-header h1 {
+            font-size: 3.5rem;
+            color: var(--primary-text);
+            margin: 0 0 1rem 0;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .main-header .summary {
+            font-size: 1.1rem;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .main-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .main-section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .main-section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.75rem;
+            color: var(--primary-text);
+            margin-bottom: 2rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .main-section-title i {
+            color: var(--accent-color);
+            margin-right: 1rem;
+        }
+        
+        /* New Styles for Employer-First Structure */
+        .employer-block {
+            margin-bottom: 2.5rem;
+        }
+        .employer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+        }
+        .employer-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-text);
+        }
+        .employer-date {
+            font-style: italic;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .position-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border-color);
+        }
+        .position-item:last-child {
+            margin-bottom: 0;
+        }
+        .position-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .position-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+        .position-date {
+            font-style: italic;
+            color: #888;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        .position-content ul {
+            padding-left: 20px;
+            margin-top: 0.75rem;
+        }
+        .position-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .item { margin-bottom: 2rem; }
+        .item:last-child { margin-bottom: 0; }
+        .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.25rem; }
+        .item-title { font-size: 1.1rem; font-weight: 700; color: var(--accent-color); margin-right: 1rem; }
+        .item-date { font-style: italic; color: #888; font-size: 0.9rem; white-space: nowrap; }
+        .item-subtitle { font-size: 1rem; font-weight: 700; color: var(--primary-text); margin-bottom: 0.75rem; }
+        .authors { font-size: 0.95em; margin: 0.25rem 0; }
+        .source { font-style: italic; }
+        
+        @media (max-width: 1024px) {
+            body { padding: 1rem; }
+            .container { grid-template-columns: 1fr; background-color: transparent; box-shadow: none; }
+            .sidebar { border-radius: var(--border-radius); box-shadow: var(--shadow); }
+            .main-content { margin-top: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--shadow); }
+        }
+        @media (max-width: 768px) {
+            .main-content { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <section class="sidebar-section">
+                <h2><i class="fas fa-address-card"></i> Contact</h2>
+                <ul class="contact-list">
+                    <li><i class="fas fa-envelope"></i> hamzed@illinois.edu</li>
+                    <li><i class="fab fa-github"></i> github.com/para2x</li>
+                    <li><i class="fas fa-phone"></i> +1 515 451 4178</li>
+                </ul>
+            </section>
+            <section class="sidebar-section">
+                <h2><i class="fas fa-cogs"></i> Skills</h2>
+                <ul class="skills-list">
+                    <li><strong>Statistics:</strong>Deep learning, Bayesian, Time series, Spatial analysis</li>
+                    <li><strong>Programming:</strong>Python, R, C#, FORTRAN</li>
+                    <li><strong>Deep Learning:</strong>TensorFlow, PyTorch</li>
+                    <li><strong>Agro-ecosystem Models:</strong>DayCent, PEcAn, APSIM, DSSAT, SWAT, PCSE</li>
+                    <li><strong>Data Fusion:</strong>Kalman Filters, 4D-Var, Particle Filter</li>
+                    <li><strong>Parallel/GPU Computing:</strong>OpenMP, MPI, OpenACC, CUDA</li>
+                    <li><strong>Technologies:</strong>Docker, SQL, GIS, Latex</li>
+                </ul>
+            </section>
+        </aside>
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Hamze Dokoohaki</h1>
+                <p class="summary">A scientist integrating deep learning and physics-based modeling for ecosystem management, specializing in hybrid, data-driven approaches to advance agricultural technology and climate-smart practices.</p>
+            </header>
+            <section class="main-section">
+                <h2 class="main-section-title"><i class="fas fa-suitcase"></i> Appointments</h2>
+                
+                <div class="employer-block">
+                    <div class="employer-header">
+                        <h3 class="employer-name">Indigo Ag</h3>
+                        <div class="employer-date">Boston, MA | 2023 - Present</div>
+                    </div>
+                    <div class="position-item">
+                        <div class="position-header"><div class="position-title">Principal Data Scientist</div></div>
+                        <div class="position-content"><ul>
+                            <li>Operationalized a next-generation Physics-Informed Neural Network agroecosystem model; secured IP through provisional patent filing.</li>
+                            <li>Pioneered an award-winning AI knowledge synthesis internal tool to automate and scale data extraction and analysis of scientific literature, demonstrating commercial potential to accelerate research and strategy.</li>
+                        </ul></div>
+                    </div>
+                    <div class="position-item">
+                        <div class="position-header"><div class="position-title">Staff Scientist</div></div>
+                        <div class="position-content"><ul>
+                            <li>Designed hybrid modeling frameworks to advance soil carbon dynamics prediction and carbon credit verification.</li>
+                            <li>Led a project generating verified carbon credits via the Climate Action Reserve Soil Enrichment Protocol.</li>
+                            <li>Guided strategic planning for next-generation sustainability modeling platforms.</li>
+                        </ul></div>
+                    </div>
+                </div>
+
+                <div class="employer-block">
+                    <div class="employer-header">
+                        <h3 class="employer-name">University of Illinois</h3>
+                        <div class="employer-date">Urbana-Champaign, IL</div>
+                    </div>
+                    <div class="position-item">
+                        <div class="position-header"><div class="position-title">Adjunct Professor of Digital Ag</div><div class="position-date">2023 - Present</div></div>
+                    </div>
+                    <div class="position-item">
+                        <div class="position-header"><div class="position-title">Assistant Professor of Digital Ag</div><div class="position-date">2020 - 2022</div></div>
+                        <div class="position-content"><ul><li>Led a research team exploring data fusion techniques to integrate process-based models with observational data.</li></ul></div>
+                    </div>
+                </div>
+                
+                <div class="employer-block">
+                    <div class="employer-header">
+                        <h3 class="employer-name">Boston University</h3>
+                        <div class="employer-date">Boston, MA | 2018 - 2020</div>
+                    </div>
+                    <div class="position-item">
+                        <div class="position-header"><div class="position-title">Postdoctoral Associate</div></div>
+                        <div class="position-content"><ul><li>Developed a prototype data assimilation system for the terrestrial carbon cycle to support Monitoring, Reporting, and Verification.</li></ul></div>
+                    </div>
+                </div>
+
+            </section>
+            <section class="main-section">
+                <h2 class="main-section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+                <div class="item"><div class="item-header"><div class="item-title">Ph.D in Crop Production and Physiology</div><div class="item-date">2018</div></div><div class="item-subtitle">Iowa State University, Ames, IA, USA</div></div>
+                <div class="item"><div class="item-header"><div class="item-title">M.Sc. in Irrigation and Drainage</div><div class="item-date">2013</div></div><div class="item-subtitle">Isfahan University of Technology, Isfahan, IRAN</div></div>
+                <div class="item"><div class="item-header"><div class="item-title">B.Sc. in Water Engineering</div><div class="item-date">2010</div></div><div class="item-subtitle">Shiraz University, Shiraz, Iran</div></div>
+            </section>
+             <section class="main-section">
+                <h2 class="main-section-title"><i class="fas fa-award"></i> Grants & Awards</h2>
+                <div class="item"><div class="item-header"><div class="item-title">Farm of the Future (Co-PI)</div><div class="item-date">2022</div></div><div class="item-subtitle">USDA NIFA ($4.4 M)</div></div>
+                <div class="item"><div class="item-header"><div class="item-title">Precision Agriculture Talent Pipeline Initiative (PI)</div><div class="item-date">2020</div></div><div class="item-subtitle">CHS Foundation ($200,000)</div></div>
+                <div class="item"><div class="item-header"><div class="item-title">Scholarship for Explorable Research</div><div class="item-date">2017</div></div><div class="item-subtitle">Nextjournal ($3000)</div></div>
+            </section>
+            <section class="main-section">
+                <h2 class="main-section-title"><i class="fas fa-book"></i> Book Chapters</h2>
+                <div class="item"><div class="item-header"><div class="item-title">Nonlinear Regression Models and Applications</div><div class="item-date">2018</div></div><p class="authors">F Miguez, S Archontoulis, <strong>H Dokoohaki.</strong></p><p class="source">Applied Statistics in Agricultural, Biological, and Environmental Sciences</p></div>
+                <div class="item"><div class="item-header"><div class="item-title">Flow and Sediment Transport Modeling in Rivers</div><div class="item-date">2014</div></div><p class="authors">M Fakhri, <strong>H Dokoohaki</strong>, S Eslamian, I Fazeli Farsani, MR Farzaneh.</p><p class="source">Handbook of Engineering Hydrology: Modeling, Climate Change, and Variability</p></div>
+            </section>
+            <section class="main-section">
+                <h2 class="main-section-title"><i class="fas fa-file-alt"></i> Selected Publications</h2>
+                <div class="item"><div class="item-header"><div class="item-title">Development of a data-assimilation system...</div><div class="item-date">2022</div></div><p class="authors">MS Kivi, B Blakely, M Masters, CJ Bernacchi, FE Miguez, <strong>H Dokoohaki.</strong></p><p class="source">Science of The Total Environment</p></div>
+                <div class="item"><div class="item-header"><div class="item-title">Development of an open-source regional data assimilation system...</div><div class="item-date">2022</div></div><p class="authors"><strong>H Dokoohaki</strong>, M Dietze, S Serbin, B Morrison.</p><p class="source">Geoscientific Model Development</p></div>
+                <div class="item"><div class="item-header"><div class="item-title">Linking remote sensing with APSIM through emulation...</div><div class="item-date">2022</div></div><p class="authors"><strong>H Dokoohaki</strong>, T Rai, M Kivi, P Lewis, J Gomez-Dans, F Yin.</p><p class="source">Remote sensing</p></div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
