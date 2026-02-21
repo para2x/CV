@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamze Dokoohaki - AI Systems Architect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --bg-primary: #fafafa;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --accent-1: #6366f1;
+            --accent-2: #8b5cf6;
+            --accent-3: #a855f7;
+            --gradient: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 50%, var(--accent-3) 100%);
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.05);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.08);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .header-photo {
+            width: 110px;
+            height: 110px;
+            border-radius: var(--radius-md);
+            object-fit: cover;
+            box-shadow: var(--shadow-md);
+            flex-shrink: 0;
+        }
+
+        .header-text h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.25rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-title {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .header-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .header-contact a, .header-contact span {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .header-contact a:hover {
+            color: var(--accent-1);
+        }
+
+        .header-contact i {
+            color: var(--accent-1);
+            font-size: 0.85rem;
+        }
+
+        /* Summary */
+        .summary {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-md);
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--text-secondary);
+            border-left: 4px solid var(--accent-1);
+        }
+
+        .summary strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* Philosophy Cards */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .philosophy-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid var(--border);
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .philosophy-card h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .philosophy-card h4::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--gradient);
+            border-radius: 50%;
+        }
+
+        .philosophy-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* System Cards */
+        .system-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            transition: box-shadow 0.2s;
+        }
+
+        .system-card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .system-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .system-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .system-context {
+            font-size: 0.8rem;
+            color: var(--accent-1);
+            background: linear-gradient(135deg, rgba(99,102,241,0.1) 0%, rgba(139,92,246,0.1) 100%);
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .system-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.65rem;
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            border-radius: 6px;
+            font-weight: 500;
+            border: 1px solid var(--border);
+        }
+
+        .system-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .system-highlights {
+            list-style: none;
+        }
+
+        .system-highlights li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.65rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .system-highlights li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.55em;
+            width: 6px;
+            height: 6px;
+            background: var(--gradient);
+            border-radius: 50%;
+        }
+
+        .system-highlights li strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .metric {
+            color: var(--accent-2);
+            font-weight: 700;
+        }
+
+        /* Competencies */
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .competency-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+        }
+
+        .competency-card h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .competency-card h4 i {
+            color: var(--accent-1);
+            font-size: 0.9rem;
+            width: 20px;
+        }
+
+        .competency-list {
+            list-style: none;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .competency-list li {
+            margin-bottom: 0.35rem;
+            padding-left: 0.75rem;
+            position: relative;
+        }
+
+        .competency-list li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        /* Experience */
+        .experience-item {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-bottom: 0.75rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 1.5rem;
+        }
+
+        .exp-meta {
+            border-right: 2px solid var(--border);
+            padding-right: 1.5rem;
+        }
+
+        .exp-company {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .exp-date {
+            color: var(--accent-1);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .exp-location {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+
+        .exp-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-content ul {
+            list-style: none;
+        }
+
+        .exp-content li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .exp-content li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--accent-1);
+            font-weight: 600;
+        }
+
+        /* Education */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .edu-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .edu-degree {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .edu-school {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .edu-year {
+            display: inline-block;
+            margin-top: 0.5rem;
+            background: var(--gradient);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+        }
+
+        .publications-note {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 1rem 1.25rem;
+            margin-top: 1rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .publications-note strong {
+            color: var(--text-primary);
+        }
+
+        .publications-note a {
+            color: var(--accent-1);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .publications-note a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .header-contact {
+                justify-content: center;
+            }
+
+            .philosophy-grid,
+            .competencies-grid,
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .exp-meta {
+                border-right: none;
+                border-bottom: 2px solid var(--border);
+                padding-right: 0;
+                padding-bottom: 1rem;
+            }
+        }
+
+        @media print {
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+
+            .header, .system-card, .philosophy-card, .competency-card, .experience-item, .edu-card {
+                box-shadow: none;
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <img src="profile_photo.jpeg" alt="Hamze Dokoohaki" class="header-photo">
+                <div class="header-text">
+                    <h1>Hamze Dokoohaki</h1>
+                    <div class="header-title">AI Systems Architect & Technical Leader</div>
+                    <div class="header-contact">
+                        <a href="mailto:para2x@gmail.com"><i class="fas fa-envelope"></i> para2x@gmail.com</a>
+                        <a href="https://linkedin.com/in/hamze-dokoohaki-52029749"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a href="https://github.com/para2x"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://kashef.ai"><i class="fas fa-globe"></i> kashef.ai</a>
+                        <span><i class="fas fa-map-marker-alt"></i> New York, NY</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Summary -->
+        <div class="summary">
+            <strong>AI systems architect</strong> who builds production-grade intelligent systems at the intersection of deterministic control and model capabilities. I've designed and shipped a <strong>20+ microservice voice AI platform</strong> handling real-time multi-agent orchestration, built <strong>RL-driven prompt optimization systems</strong>, and implemented <strong>AI safety infrastructure</strong> from the ground up. My background spans ecosystem modeling, physics-informed neural networks, and healthcare AI—but the common thread is building systems where AI is powerful where it needs to be and predictable where it must be.
+        </div>
+
+        <!-- Technical Philosophy -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon"><i class="fas fa-lightbulb"></i></div>
+                <h2 class="section-title">Technical Philosophy</h2>
+            </div>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <h4>State Machines + LLMs</h4>
+                    <p>LLMs are powerful but unpredictable—they shouldn't be the orchestrator. I build explicit state machines as the control plane: deterministic routing, transitions, and safety enforcement, with LLMs handling NLU/NLG within bounded contexts.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h4>Safety as Infrastructure</h4>
+                    <p>Safety isn't a filter on outputs—it's built into every layer. Input sanitization, prompt injection defense, PII detection, escalation thresholds, and human handoff are architectural decisions, not afterthoughts.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h4>Evaluation-Driven Development</h4>
+                    <p>If you can't measure it, you can't improve it. I build automated evaluation infrastructure (agent gyms, LLM-as-Judge, voice quality benchmarks) that closes the loop between deployment and optimization.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Systems Built -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon"><i class="fas fa-cubes"></i></div>
+                <h2 class="section-title">Key Systems Built</h2>
+            </div>
+
+            <div class="system-card">
+                <div class="system-header">
+                    <span class="system-name">Production Voice AI Platform</span>
+                    <span class="system-context">Blooming Health</span>
+                </div>
+                <div class="system-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">FastAPI</span>
+                    <span class="tech-tag">LangGraph</span>
+                    <span class="tech-tag">WebRTC</span>
+                    <span class="tech-tag">Twilio</span>
+                    <span class="tech-tag">Redis</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">CUDA</span>
+                </div>
+                <p class="system-description">
+                    Designed and led development of a production-grade voice AI platform—a <span class="metric">20+ microservice system</span> that orchestrates real-time, multi-turn conversational agents across voice (WebRTC, PSTN), SMS, and text channels. Not a wrapper around an API; a full operating system for conversational AI.
+                </p>
+                <ul class="system-highlights">
+                    <li><strong>State Machine as Control Plane:</strong> Built a 2,600-line deterministic state machine that governs multi-agent conversations—LLMs handle natural language within bounded contexts, but routing, transitions, and safety enforcement follow explicit state logic. The key insight: treat the LLM as a powerful but unpredictable component that needs guardrails, not as the orchestrator itself</li>
+                    <li><strong>Composable Conversation Graphs:</strong> Designed 10 workflow processors as traversable state graphs (surveys, forms, verification, routing) with cursor-based navigation and conditional edges—complex multi-turn interactions become predictable paths through well-defined states</li>
+                    <li><strong>Hot-Swapping Agent Context:</strong> Solved mid-conversation context switching (swapping system prompt, tools, persona) without dropping calls—required careful state synchronization via VAD gating to prevent race conditions between audio streams and context updates</li>
+                    <li><strong>Provider-Agnostic LLM Integration:</strong> Abstracted across Gemini, OpenAI Realtime, and Claude with centralized tool execution via MCP—enabling model swaps without pipeline changes</li>
+                    <li><strong>Automated Prompt Optimization:</strong> Built RL system that analyzes failing conversations, identifies weak prompt sections, and generates improved variants using three strategies (textual gradient, evolutionary, Bayesian optimization)</li>
+                    <li><strong>Continuous Agent Evaluation:</strong> Gymnasium-compatible framework running <span class="metric">10-1,000 parallel episodes</span> with LLM-powered user simulators, closing the loop between deployment and measurable improvement</li>
+                    <li><strong>Production Audio Pipeline:</strong> Integrated 4 STT engines, 4 TTS engines, 4 noise suppression algorithms, and dual-trigger VAD (physics + semantic) for natural turn-taking</li>
+                </ul>
+            </div>
+
+            <div class="system-card">
+                <div class="system-header">
+                    <span class="system-name">Kashef.ai - Knowledge Discovery Platform</span>
+                    <span class="system-context">Kashef AI LLC (Founder)</span>
+                </div>
+                <div class="system-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">LangChain</span>
+                    <span class="tech-tag">pgvector</span>
+                    <span class="tech-tag">Knowledge Graphs</span>
+                    <span class="tech-tag">RAG</span>
+                    <span class="tech-tag">Multi-Agent</span>
+                </div>
+                <p class="system-description">
+                    Multi-modal knowledge discovery platform combining semantic embedding search, heterogeneous knowledge graphs, and agentic orchestration for non-obvious pattern discovery across scientific corpora.
+                </p>
+                <ul class="system-highlights">
+                    <li><strong>Beyond Vector Search:</strong> Combined embedding similarity with graph traversal (BFS/DFS, centrality, community detection) to surface multi-hop insights that pure RAG misses</li>
+                    <li><strong>Cross-Domain Discovery:</strong> Built semantic bridges across entity types (papers, compounds, mechanisms) enabling non-obvious connection discovery for R&D teams</li>
+                    <li><strong>Composable Agent Capabilities:</strong> Designed plugin architecture where skills are registered with metadata and schemas—agents compose them at runtime without code changes</li>
+                    <li><strong>Defensible AI Outputs:</strong> DAG-based provenance tracking so every insight traces back to source documents—critical for science-heavy contexts where credibility matters</li>
+                </ul>
+            </div>
+
+            <div class="system-card">
+                <div class="system-header">
+                    <span class="system-name">Physics-Informed Neural Network Platform</span>
+                    <span class="system-context">Indigo Ag</span>
+                </div>
+                <div class="system-tech">
+                    <span class="tech-tag">PyTorch</span>
+                    <span class="tech-tag">AWS SageMaker</span>
+                    <span class="tech-tag">Differentiable Programming</span>
+                    <span class="tech-tag">Bayesian Methods</span>
+                </div>
+                <p class="system-description">
+                    End-to-end ML pipeline processing <span class="metric">300GB+ geospatial data</span> for soil carbon dynamics prediction, achieving <span class="metric">20% improvement</span> over traditional process-based models.
+                </p>
+                <ul class="system-highlights">
+                    <li><strong>Hybrid ML + Physics:</strong> Neural networks learn residual corrections to process-based models—getting the accuracy of deep learning while preserving physical consistency and interpretability</li>
+                    <li><strong>Novel Architecture (Provisional Patent):</strong> Invented differentiable coupling between ecosystem equations and learned components, enabling end-to-end optimization</li>
+                    <li><strong>Deployed at Scale:</strong> Model now supports carbon credit verification for real commercial agricultural operations</li>
+                </ul>
+            </div>
+
+            <div class="system-card">
+                <div class="system-header">
+                    <span class="system-name">AI Knowledge Synthesis System</span>
+                    <span class="system-context">Indigo Ag</span>
+                </div>
+                <div class="system-tech">
+                    <span class="tech-tag">Local LLMs</span>
+                    <span class="tech-tag">RAG</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                </div>
+                <p class="system-description">
+                    Internal award-winning tool automating literature analysis across <span class="metric">3,000+ scientific papers</span> with multilingual synthesis and source traceability.
+                </p>
+                <ul class="system-highlights">
+                    <li><strong>Validated Commercial Value:</strong> Two-time internal hackathon winner; demonstrated potential for significant time savings in R&D workflows</li>
+                    <li><strong>Multilingual Discovery:</strong> Surfaces region-specific research (non-English sources) that traditional keyword search misses</li>
+                    <li><strong>Traceable Extraction:</strong> Every synthesized insight links back to source passages—essential when AI outputs inform business decisions</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Core Competencies -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon"><i class="fas fa-tools"></i></div>
+                <h2 class="section-title">Core Competencies</h2>
+            </div>
+            <div class="competencies-grid">
+                <div class="competency-card">
+                    <h4><i class="fas fa-brain"></i> LLM Engineering & Integration</h4>
+                    <ul class="competency-list">
+                        <li>Multi-provider integration (OpenAI, Anthropic, Gemini)</li>
+                        <li>LangChain/LangGraph for stateful conversation management</li>
+                        <li>Model Context Protocol (MCP) for tool execution</li>
+                        <li>Production prompt engineering (versioning, A/B testing, compilation)</li>
+                        <li>OpenAI Realtime API for voice-native interactions</li>
+                    </ul>
+                </div>
+                <div class="competency-card">
+                    <h4><i class="fas fa-project-diagram"></i> Multi-Agent Systems</h4>
+                    <ul class="competency-list">
+                        <li>Deterministic state machine orchestration</li>
+                        <li>Agent handoff and context switching patterns</li>
+                        <li>Tool execution isolation and governance</li>
+                        <li>Skill/capability registry architectures</li>
+                        <li>Human-in-the-loop and escalation design</li>
+                    </ul>
+                </div>
+                <div class="competency-card">
+                    <h4><i class="fas fa-shield-alt"></i> AI Safety & Responsible Deployment</h4>
+                    <ul class="competency-list">
+                        <li>Prompt injection defense and input sanitization</li>
+                        <li>PII detection and content filtering</li>
+                        <li>Output safety monitoring and guardrails</li>
+                        <li>Risk level tracking and intervention routing</li>
+                        <li>Rate limiting and abuse prevention</li>
+                    </ul>
+                </div>
+                <div class="competency-card">
+                    <h4><i class="fas fa-chart-line"></i> Evaluation & Optimization</h4>
+                    <ul class="competency-list">
+                        <li>Gymnasium-compatible agent evaluation frameworks</li>
+                        <li>LLM-as-Judge quality scoring</li>
+                        <li>RL-driven prompt optimization (OPRO, Promptbreeder, Bayesian)</li>
+                        <li>Voice quality metrics (WER, CER, entity accuracy)</li>
+                        <li>Automated regression and A/B testing</li>
+                    </ul>
+                </div>
+                <div class="competency-card">
+                    <h4><i class="fas fa-microphone"></i> Speech & Audio AI</h4>
+                    <ul class="competency-list">
+                        <li>STT (Whisper, FunASR, Deepgram, OpenAI Realtime)</li>
+                        <li>TTS (OpenVoice, MeloTTS, Cartesia, Cosyvoice)</li>
+                        <li>VAD (PyAnnote, Silero, semantic turn detection)</li>
+                        <li>Noise suppression (DTLN, RNNoise, GTCRN, WebRTC)</li>
+                        <li>Real-time audio pipeline engineering</li>
+                    </ul>
+                </div>
+                <div class="competency-card">
+                    <h4><i class="fas fa-server"></i> Production Infrastructure</h4>
+                    <ul class="competency-list">
+                        <li>Docker/Compose orchestration (20+ services)</li>
+                        <li>GPU inference (BentoML, ONNX, CUDA)</li>
+                        <li>CI/CD (GitHub Actions, GCP Artifact Registry)</li>
+                        <li>Redis state management, PostgreSQL + pgvector</li>
+                        <li>WebRTC/Twilio real-time communication</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon"><i class="fas fa-briefcase"></i></div>
+                <h2 class="section-title">Experience</h2>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-meta">
+                    <div class="exp-company">Blooming Health</div>
+                    <div class="exp-date">Oct 2025 - Present</div>
+                    <div class="exp-location">New York, NY</div>
+                </div>
+                <div class="exp-content">
+                    <h4>Director of AI</h4>
+                    <ul>
+                        <li>Leading AI strategy and architecture for healthcare technology platform</li>
+                        <li>Built production voice AI system from ground up (20+ microservices)</li>
+                        <li>Designed state machine orchestration ensuring deterministic control over multi-agent conversations</li>
+                        <li>Hiring and building AI engineering team</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-meta">
+                    <div class="exp-company">Kashef AI LLC</div>
+                    <div class="exp-date">2025 - Present</div>
+                    <div class="exp-location">New York, NY</div>
+                </div>
+                <div class="exp-content">
+                    <h4>Founder</h4>
+                    <ul>
+                        <li>Founded AI consulting firm specializing in knowledge discovery and agentic systems</li>
+                        <li>Built knowledge discovery platform combining semantic search, knowledge graphs, and multi-agent orchestration</li>
+                        <li>Advising science-driven organizations on AI strategy and implementation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-meta">
+                    <div class="exp-company">Indigo Ag</div>
+                    <div class="exp-date">Feb 2023 - Present</div>
+                    <div class="exp-location">Boston, MA (Remote)</div>
+                </div>
+                <div class="exp-content">
+                    <h4>Principal Data Scientist → Technical Consultant</h4>
+                    <ul>
+                        <li>Operationalized physics-informed neural network; secured provisional patent</li>
+                        <li>Built award-winning AI knowledge synthesis platform (3K+ papers)</li>
+                        <li>Led cross-functional team across ML, DevOps, and domain science</li>
+                        <li>Contributed to largest agricultural soil carbon deal ($2.85M Microsoft credits)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-meta">
+                    <div class="exp-company">U. Illinois Urbana-Champaign</div>
+                    <div class="exp-date">Jun 2020 - Present</div>
+                    <div class="exp-location">Urbana-Champaign, IL</div>
+                </div>
+                <div class="exp-content">
+                    <h4>Assistant Professor → Adjunct Professor</h4>
+                    <ul>
+                        <li>Led digital agriculture research: data fusion, remote sensing, predictive modeling</li>
+                        <li>PI/Co-PI on $4.6M+ in grants (USDA NIFA, CHS Foundation)</li>
+                        <li>25+ peer-reviewed publications in high-impact journals</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-meta">
+                    <div class="exp-company">Boston University</div>
+                    <div class="exp-date">Jun 2018 - May 2020</div>
+                    <div class="exp-location">Boston, MA</div>
+                </div>
+                <div class="exp-content">
+                    <h4>Postdoctoral Research Associate</h4>
+                    <ul>
+                        <li>Built continental-scale data assimilation system for carbon cycle MRV</li>
+                        <li>Developed Kalman Filter and particle filter frameworks for ecological forecasting</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h2 class="section-title">Education</h2>
+            </div>
+            <div class="education-grid">
+                <div class="edu-card">
+                    <div class="edu-degree">Ph.D. Crop Production & Physiology</div>
+                    <div class="edu-school">Iowa State University</div>
+                    <div class="edu-year">2018</div>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-degree">M.Sc. Irrigation & Drainage</div>
+                    <div class="edu-school">Isfahan University of Technology</div>
+                    <div class="edu-year">2013</div>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-degree">B.Sc. Water Engineering</div>
+                    <div class="edu-school">Shiraz University</div>
+                    <div class="edu-year">2010</div>
+                </div>
+            </div>
+            <div class="publications-note">
+                <strong>Publications & IP:</strong> 25+ peer-reviewed publications (journals including Science of The Total Environment, Geoscientific Model Development, Remote Sensing). Provisional patent holder for Physics-Informed Neural Network architecture. Full publication list available on <a href="https://scholar.google.com">Google Scholar</a>.
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamze Dokoohaki - AI Systems Architect</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: letter;
+            margin: 0.5in 0.6in;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1a1a2e;
+            line-height: 1.5;
+            font-size: 10pt;
+            background: white;
+        }
+
+        a {
+            color: #4f46e5;
+            text-decoration: none;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #4f46e5;
+        }
+
+        .header-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        .header-content h1 {
+            font-size: 22pt;
+            font-weight: 700;
+            margin-bottom: 0.1rem;
+            color: #1a1a2e;
+        }
+
+        .header-title {
+            font-size: 11pt;
+            color: #4f46e5;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .header-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            font-size: 9pt;
+            color: #4a5568;
+        }
+
+        .header-contact span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* Summary */
+        .summary {
+            background: #f8f9fa;
+            border-left: 3px solid #4f46e5;
+            padding: 0.6rem 0.8rem;
+            margin-bottom: 0.75rem;
+            font-size: 9.5pt;
+            color: #4a5568;
+        }
+
+        .summary strong {
+            color: #1a1a2e;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 0.7rem;
+        }
+
+        .section-title {
+            font-size: 10pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #4f46e5;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.2rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        /* Philosophy */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+        }
+
+        .philosophy-card {
+            padding: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .philosophy-card h4 {
+            font-size: 9pt;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 0.2rem;
+        }
+
+        .philosophy-card p {
+            font-size: 8pt;
+            color: #4a5568;
+            line-height: 1.4;
+        }
+
+        /* Systems */
+        .system-card {
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            page-break-inside: avoid;
+        }
+
+        .system-card:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .system-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.3rem;
+        }
+
+        .system-name {
+            font-size: 10pt;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        .system-context {
+            font-size: 8pt;
+            color: #4a5568;
+            font-style: italic;
+        }
+
+        .system-tech {
+            margin-bottom: 0.3rem;
+            font-size: 8pt;
+            color: #4f46e5;
+        }
+
+        .system-description {
+            font-size: 9pt;
+            color: #4a5568;
+            margin-bottom: 0.3rem;
+        }
+
+        .system-highlights {
+            list-style: none;
+            font-size: 8.5pt;
+            color: #4a5568;
+        }
+
+        .system-highlights li {
+            position: relative;
+            padding-left: 0.8rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .system-highlights li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: #4f46e5;
+            font-weight: 700;
+        }
+
+        .metric {
+            color: #059669;
+            font-weight: 600;
+        }
+
+        /* Competencies */
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem 1rem;
+        }
+
+        .competency-group h4 {
+            font-size: 9pt;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 0.2rem;
+        }
+
+        .competency-list {
+            list-style: none;
+            font-size: 8pt;
+            color: #4a5568;
+        }
+
+        .competency-list li {
+            margin-bottom: 0.1rem;
+        }
+
+        /* Experience */
+        .experience-item {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 0.75rem;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            page-break-inside: avoid;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .exp-company {
+            font-weight: 600;
+            font-size: 9pt;
+            color: #1a1a2e;
+        }
+
+        .exp-date {
+            font-size: 8pt;
+            color: #4a5568;
+        }
+
+        .exp-location {
+            font-size: 8pt;
+            color: #718096;
+        }
+
+        .exp-content h4 {
+            font-size: 9pt;
+            font-weight: 600;
+            color: #4f46e5;
+            margin-bottom: 0.2rem;
+        }
+
+        .exp-content ul {
+            list-style: none;
+            font-size: 8.5pt;
+            color: #4a5568;
+        }
+
+        .exp-content li {
+            position: relative;
+            padding-left: 0.7rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .exp-content li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: #4f46e5;
+            font-weight: 600;
+            font-size: 8pt;
+        }
+
+        /* Education */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+        }
+
+        .edu-card {
+            padding: 0.4rem;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .edu-degree {
+            font-weight: 600;
+            font-size: 8.5pt;
+            color: #1a1a2e;
+        }
+
+        .edu-school {
+            font-size: 8pt;
+            color: #4a5568;
+        }
+
+        .edu-year {
+            font-size: 8pt;
+            color: #4f46e5;
+        }
+
+        .publications-note {
+            font-size: 8.5pt;
+            color: #4a5568;
+            margin-top: 0.5rem;
+            padding: 0.4rem 0.6rem;
+            background: #f8f9fa;
+            border-left: 2px solid #4f46e5;
+        }
+
+        /* Page breaks */
+        .page-break {
+            page-break-before: always;
+        }
+
+        .no-break {
+            page-break-inside: avoid;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <img src="profile_photo.jpeg" alt="Hamze Dokoohaki" class="header-photo">
+        <div class="header-content">
+            <h1>Hamze Dokoohaki</h1>
+            <div class="header-title">AI Systems Architect & Technical Leader</div>
+            <div class="header-contact">
+                <span>para2x@gmail.com</span>
+                <span>|</span>
+                <span><a href="https://linkedin.com/in/hamze-dokoohaki-52029749">LinkedIn</a></span>
+                <span>|</span>
+                <span><a href="https://github.com/para2x">GitHub</a></span>
+                <span>|</span>
+                <span><a href="https://kashef.ai">kashef.ai</a></span>
+                <span>|</span>
+                <span>New York, NY</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Summary -->
+    <div class="summary">
+        <strong>AI systems architect</strong> who builds production-grade intelligent systems at the intersection of deterministic control and model capabilities. Designed and shipped a <strong>20+ microservice voice AI platform</strong> handling real-time multi-agent orchestration, built <strong>RL-driven prompt optimization systems</strong>, and implemented <strong>AI safety infrastructure</strong> from the ground up. Background spans ecosystem modeling, physics-informed neural networks, and healthcare AI—the common thread is building systems where AI is powerful where it needs to be and predictable where it must be.
+    </div>
+
+    <!-- Technical Philosophy -->
+    <section class="section">
+        <h2 class="section-title">Technical Philosophy</h2>
+        <div class="philosophy-grid">
+            <div class="philosophy-card">
+                <h4>State Machines + LLMs</h4>
+                <p>LLMs are powerful but unpredictable—they shouldn't orchestrate. I build explicit state machines as the control plane, with LLMs handling NLU/NLG within bounded contexts.</p>
+            </div>
+            <div class="philosophy-card">
+                <h4>Safety as Infrastructure</h4>
+                <p>Safety isn't a filter—it's architectural. Input sanitization, prompt injection defense, PII detection, and human handoff built into every layer.</p>
+            </div>
+            <div class="philosophy-card">
+                <h4>Evaluation-Driven Development</h4>
+                <p>Automated evaluation infrastructure (agent gyms, LLM-as-Judge, voice benchmarks) closes the loop between deployment and optimization.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Systems Built -->
+    <section class="section">
+        <h2 class="section-title">Key Systems Built</h2>
+
+        <div class="system-card">
+            <div class="system-header">
+                <span class="system-name">Production Voice AI Platform</span>
+                <span class="system-context">Blooming Health</span>
+            </div>
+            <div class="system-tech">Python | FastAPI | LangGraph | WebRTC | Twilio | Redis | PostgreSQL | Docker | CUDA</div>
+            <p class="system-description">
+                Production-grade voice AI platform—<span class="metric">20+ microservice system</span> orchestrating real-time, multi-turn conversational agents across voice (WebRTC, PSTN), SMS, and text. A full operating system for conversational AI.
+            </p>
+            <ul class="system-highlights">
+                <li><strong>State Machine as Control Plane:</strong> 2,600-line deterministic state machine governing multi-agent conversations—LLMs handle language within bounded contexts, but routing/transitions/safety follow explicit state logic</li>
+                <li><strong>Composable Conversation Graphs:</strong> 10 workflow processors as traversable state graphs with cursor navigation and conditional edges—complex interactions become predictable paths</li>
+                <li><strong>Hot-Swapping Agent Context:</strong> Mid-conversation context switching without dropping calls—VAD gating for state synchronization</li>
+                <li><strong>Automated Prompt Optimization:</strong> RL system analyzing failures and generating improved variants (textual gradient, evolutionary, Bayesian strategies)</li>
+                <li><strong>Continuous Agent Evaluation:</strong> Gymnasium-compatible framework running <span class="metric">10-1,000 parallel episodes</span> with LLM-powered simulators</li>
+                <li><strong>Production Audio Pipeline:</strong> 4 STT engines, 4 TTS engines, 4 noise suppression algorithms, dual-trigger VAD for natural turn-taking</li>
+            </ul>
+        </div>
+
+        <div class="system-card">
+            <div class="system-header">
+                <span class="system-name">Kashef.ai - Knowledge Discovery Platform</span>
+                <span class="system-context">Kashef AI LLC (Founder)</span>
+            </div>
+            <div class="system-tech">Python | LangChain | pgvector | Knowledge Graphs | RAG | Multi-Agent</div>
+            <p class="system-description">
+                Multi-modal knowledge discovery combining semantic embeddings, heterogeneous knowledge graphs, and agentic orchestration for cross-domain pattern discovery.
+            </p>
+            <ul class="system-highlights">
+                <li><strong>Beyond Vector Search:</strong> Embeddings + graph traversal (centrality, community detection) to surface multi-hop insights pure RAG misses</li>
+                <li><strong>Composable Agent Capabilities:</strong> Plugin architecture where skills register with metadata/schemas—agents compose at runtime</li>
+                <li><strong>Defensible AI Outputs:</strong> DAG-based provenance so every insight traces to source documents</li>
+            </ul>
+        </div>
+
+        <div class="system-card">
+            <div class="system-header">
+                <span class="system-name">Physics-Informed Neural Network Platform</span>
+                <span class="system-context">Indigo Ag</span>
+            </div>
+            <div class="system-tech">PyTorch | AWS SageMaker | Differentiable Programming | Bayesian Methods</div>
+            <p class="system-description">
+                Neural networks learning residual corrections to physics-based models—accuracy of deep learning with physical consistency. Processing <span class="metric">300GB+ geospatial data</span>, <span class="metric">20% improvement</span> over traditional models. <strong>Provisional patent</strong> for novel differentiable coupling architecture.
+            </p>
+        </div>
+
+        <div class="system-card">
+            <div class="system-header">
+                <span class="system-name">AI Knowledge Synthesis System</span>
+                <span class="system-context">Indigo Ag</span>
+            </div>
+            <div class="system-tech">Local LLMs | RAG | React | PostgreSQL</div>
+            <p class="system-description">
+                Award-winning tool automating literature analysis across <span class="metric">3,000+ papers</span>. Multilingual discovery surfaces non-English research; traceable extraction links every insight to source passages. Two-time hackathon winner with demonstrated commercial value.
+            </p>
+        </div>
+    </section>
+
+    <!-- Core Competencies -->
+    <section class="section">
+        <h2 class="section-title">Core Competencies</h2>
+        <div class="competencies-grid">
+            <div class="competency-group">
+                <h4>LLM Engineering</h4>
+                <ul class="competency-list">
+                    <li>Multi-provider (OpenAI, Anthropic, Gemini)</li>
+                    <li>LangChain/LangGraph orchestration</li>
+                    <li>MCP for tool execution</li>
+                    <li>Production prompt engineering</li>
+                    <li>OpenAI Realtime API</li>
+                </ul>
+            </div>
+            <div class="competency-group">
+                <h4>Multi-Agent Systems</h4>
+                <ul class="competency-list">
+                    <li>Deterministic state machines</li>
+                    <li>Agent handoff patterns</li>
+                    <li>Tool execution governance</li>
+                    <li>Skill/capability registries</li>
+                    <li>Human-in-the-loop design</li>
+                </ul>
+            </div>
+            <div class="competency-group">
+                <h4>AI Safety</h4>
+                <ul class="competency-list">
+                    <li>Prompt injection defense</li>
+                    <li>PII detection & filtering</li>
+                    <li>Output safety monitoring</li>
+                    <li>Risk tracking & escalation</li>
+                    <li>Rate limiting & abuse prevention</li>
+                </ul>
+            </div>
+            <div class="competency-group">
+                <h4>Evaluation & Optimization</h4>
+                <ul class="competency-list">
+                    <li>Gymnasium agent frameworks</li>
+                    <li>LLM-as-Judge scoring</li>
+                    <li>RL prompt optimization</li>
+                    <li>Voice metrics (WER, CER)</li>
+                    <li>Automated A/B testing</li>
+                </ul>
+            </div>
+            <div class="competency-group">
+                <h4>Speech & Audio AI</h4>
+                <ul class="competency-list">
+                    <li>STT (Whisper, Deepgram, FunASR)</li>
+                    <li>TTS (OpenVoice, Cartesia, MeloTTS)</li>
+                    <li>VAD (PyAnnote, Silero, semantic)</li>
+                    <li>Noise suppression (DTLN, RNNoise)</li>
+                    <li>Real-time audio pipelines</li>
+                </ul>
+            </div>
+            <div class="competency-group">
+                <h4>Infrastructure</h4>
+                <ul class="competency-list">
+                    <li>Docker/Compose (20+ services)</li>
+                    <li>GPU inference (BentoML, ONNX)</li>
+                    <li>CI/CD (GitHub Actions, GCP)</li>
+                    <li>Redis, PostgreSQL, pgvector</li>
+                    <li>WebRTC/Twilio real-time</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="section">
+        <h2 class="section-title">Experience</h2>
+
+        <div class="experience-item">
+            <div>
+                <div class="exp-company">Blooming Health</div>
+                <div class="exp-date">Oct 2025 - Present</div>
+                <div class="exp-location">New York, NY</div>
+            </div>
+            <div class="exp-content">
+                <h4>Director of AI</h4>
+                <ul>
+                    <li>Leading AI strategy and architecture for healthcare technology platform</li>
+                    <li>Built production voice AI system from ground up (20+ microservices)</li>
+                    <li>Designed state machine orchestration ensuring deterministic control over multi-agent conversations</li>
+                    <li>Hiring and building AI engineering team</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div>
+                <div class="exp-company">Kashef AI LLC</div>
+                <div class="exp-date">2025 - Present</div>
+                <div class="exp-location">New York, NY</div>
+            </div>
+            <div class="exp-content">
+                <h4>Founder</h4>
+                <ul>
+                    <li>Founded AI consulting firm for knowledge discovery and agentic systems</li>
+                    <li>Built platform combining semantic search, knowledge graphs, and multi-agent orchestration</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div>
+                <div class="exp-company">Indigo Ag</div>
+                <div class="exp-date">Feb 2023 - Present</div>
+                <div class="exp-location">Boston, MA (Remote)</div>
+            </div>
+            <div class="exp-content">
+                <h4>Principal Data Scientist → Technical Consultant</h4>
+                <ul>
+                    <li>Operationalized physics-informed neural network; secured provisional patent</li>
+                    <li>Built award-winning AI knowledge synthesis platform (3K+ papers)</li>
+                    <li>Contributed to largest agricultural soil carbon deal ($2.85M Microsoft credits)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div>
+                <div class="exp-company">U. Illinois Urbana-Champaign</div>
+                <div class="exp-date">Jun 2020 - Present</div>
+                <div class="exp-location">Urbana-Champaign, IL</div>
+            </div>
+            <div class="exp-content">
+                <h4>Assistant Professor → Adjunct Professor</h4>
+                <ul>
+                    <li>Led digital agriculture research: data fusion, remote sensing, predictive modeling</li>
+                    <li>PI/Co-PI on $4.6M+ grants; 25+ peer-reviewed publications</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div>
+                <div class="exp-company">Boston University</div>
+                <div class="exp-date">Jun 2018 - May 2020</div>
+                <div class="exp-location">Boston, MA</div>
+            </div>
+            <div class="exp-content">
+                <h4>Postdoctoral Research Associate</h4>
+                <ul>
+                    <li>Built continental-scale data assimilation for carbon cycle MRV</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section class="section no-break">
+        <h2 class="section-title">Education</h2>
+        <div class="education-grid">
+            <div class="edu-card">
+                <div class="edu-degree">Ph.D. Crop Production & Physiology</div>
+                <div class="edu-school">Iowa State University</div>
+                <div class="edu-year">2018</div>
+            </div>
+            <div class="edu-card">
+                <div class="edu-degree">M.Sc. Irrigation & Drainage</div>
+                <div class="edu-school">Isfahan University of Technology</div>
+                <div class="edu-year">2013</div>
+            </div>
+            <div class="edu-card">
+                <div class="edu-degree">B.Sc. Water Engineering</div>
+                <div class="edu-school">Shiraz University</div>
+                <div class="edu-year">2010</div>
+            </div>
+        </div>
+        <div class="publications-note">
+            <strong>Publications & IP:</strong> 25+ peer-reviewed publications (Science of The Total Environment, Geoscientific Model Development, Remote Sensing). Provisional patent for Physics-Informed Neural Network architecture.
+        </div>
+    </section>
+
+</body>
+</html>
